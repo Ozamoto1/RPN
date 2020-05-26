@@ -1,0 +1,6 @@
+﻿  pch.cpp
+  dllmain.cpp
+  History.cpp
+  HistoryManager.cpp
+  コードを生成中...
+LINK : fatal error LNK1104: ファイル 'D:\Ozamoto\develop\RPNCaluculator\Debug\Caluculator.lib' を開くことができません。

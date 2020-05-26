@@ -10,16 +10,18 @@ class CalcNode;
 
 class History
 {
-private:
-  std::vector<std::shared_ptr<CalcNode>> m_CalcNodes;
 
 public:
   History();
+  History(const std::vector<std::shared_ptr<CalcNode>>& calcNodes);
   ~History();
 
-  // İ’è‚·‚é
-  void SetCalcNodes(std::vector<std::shared_ptr<CalcNode>> calcNodes);
-  // æ“¾‚·‚é
-  std::vector<std::shared_ptr<CalcNode>> GetCalcNodes();
+  // —š—ğî•ñ‚ğİ’è‚·‚é
+  void SetCalcNodes(const std::vector<std::shared_ptr<CalcNode>>& calcNodes);
+  // —š—ğî•ñ‚ğæ“¾‚·‚é
+  std::vector<std::shared_ptr<CalcNode>> GetCalcNodes() const;
+
+private:
+  std::vector<std::shared_ptr<CalcNode>> m_CalcNodes;
 
 };

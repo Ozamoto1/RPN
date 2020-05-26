@@ -8,6 +8,10 @@
 #include "RPNCaluculatorDlg.h"
 #include "afxdialogex.h"
 
+#include "CalcNode.h"
+#include "HistoryManager.h"
+#include "History.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -100,6 +104,39 @@ BOOL CRPNCaluculatorDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 小さいアイコンの設定
 
 	// TODO: 初期化をここに追加します。
+
+
+  // 動作チェック用
+  std::shared_ptr<HistoryManager> hm = std::make_shared<HistoryManager>();
+
+  std::vector< std::shared_ptr<CalcNode>> calcNodes1 =  std::vector<std::shared_ptr<CalcNode>>();
+  calcNodes1 = {
+    std::make_shared<CalcNode>(1, CalcNode::Operation::None),
+    std::make_shared<CalcNode>(2, CalcNode::Operation::Addition)
+  };
+
+  std::vector< std::shared_ptr<CalcNode>> calcNodes2 =  std::vector<std::shared_ptr<CalcNode>>();
+  calcNodes2 = {
+    std::make_shared<CalcNode>(3, CalcNode::Operation::Division),
+    std::make_shared<CalcNode>(4, CalcNode::Operation::Multiplication)
+  };
+
+  std::vector< std::shared_ptr<CalcNode>> calcNodes3 =  std::vector<std::shared_ptr<CalcNode>>();
+  calcNodes3 = {
+    std::make_shared<CalcNode>(5, CalcNode::Operation::Division),
+    std::make_shared<CalcNode>(6, CalcNode::Operation::Multiplication)
+  };
+  
+  hm->Add(calcNodes1);
+  hm->Add(calcNodes2);
+  hm->Add(calcNodes3);
+
+  auto test1 = hm->Previous();
+  auto test2 = hm->Previous();
+  auto test3 = hm->Previous();
+  auto test4 = hm->Next();
+  auto test5 = hm->Next();
+  auto test6 = hm->Next();
 
 	return TRUE;  // フォーカスをコントロールに設定した場合を除き、TRUE を返します。
 }

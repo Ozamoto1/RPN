@@ -14,12 +14,14 @@ public:
   HistoryManager();
   ~HistoryManager();
 
-  // 次の問題を表示する
+  // 次の履歴情報を取得する
   std::vector<std::shared_ptr<CalcNode>> Next();
-  // 前の問題を表示する
+  
+  // 前の履歴情報を取得
   std::vector<std::shared_ptr<CalcNode>> Previous();
-  // 問題を追加する
-  void Add(std::vector<std::shared_ptr<CalcNode>> vectorCalcNode);
+  
+  // 履歴情報を追加する
+  void Add(const std::vector<std::shared_ptr<CalcNode>>& calcNodes);
 
 private:
   std::stack<std::shared_ptr<History>> m_UndoStack;

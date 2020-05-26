@@ -41,7 +41,7 @@ std::vector<std::shared_ptr<CalcNode>> HistoryManager::Next()
 
 //-------------------------------------------------------------------------
 /*!
-  @brief 前の問題を表示する
+  @brief 前の履歴情報を取得示する
 */
 //-------------------------------------------------------------------------
 std::vector<std::shared_ptr<CalcNode>> HistoryManager::Previous()
@@ -51,24 +51,19 @@ std::vector<std::shared_ptr<CalcNode>> HistoryManager::Previous()
   }
 
   m_RedoStack.push(std::move(m_UndoStack.top())); // topではなくmoveを使う
-  //m_UndoStack.pop(); moveを使うと不要な処理になる。
+  m_UndoStack.pop(); //moveを使うと不要な処理になる。
 
   return m_RedoStack.top()->GetCalcNodes();
 }
 
 //-------------------------------------------------------------------------
 /*!
-  @brief 問題を追加する
+  @brief 履歴情報を追加する
 */
 //-------------------------------------------------------------------------
-void HistoryManager::Add(std::vector<std::shared_ptr<CalcNode>> vectorCalcNode)
+void HistoryManager::Add(const std::vector<std::shared_ptr<CalcNode>>& calcNodes)
 {
-  auto history = std::make_shared<History>();
-  //for (int i = 0; i < vectorCalcNode.size(); i++)
-  //{
-  //  void HistoryManager::Add(std::vector<CalcNode> vectorCalcNode)
-  //}
-  history->SetCalcNodes(vectorCalcNode);
+  auto history = std::make_shared<History>(calcNodes);
   m_UndoStack.push(history);
 }
 

@@ -23,7 +23,7 @@
     <ProjectGuid>{0CAFF19C-69A6-4D8C-97E9-BB92FFFB91BE}</ProjectGuid>
     <Keyword>MFCProj</Keyword>
     <RootNamespace>RPNCaluculator</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -44,7 +44,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
@@ -115,6 +115,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\Caluculator;..\CaluculationHistory;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -208,6 +209,14 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\RPNCaluculator.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CaluculationHistory\CaluculationHistory.vcxproj">
+      <Project>{d19f6bed-51df-4f78-b254-7b2b51b86a94}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Caluculator\Caluculator.vcxproj">
+      <Project>{55d7d5c5-60e9-4837-8ef0-2eae58980326}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
